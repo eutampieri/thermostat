@@ -8,9 +8,10 @@
 #define TST_THERMO
 
 #define TST_ALPHA = 0.25
-#define TST_HEATING = 0b00000001
-#define TST_COOLING = 0b00000010
-#define TST_HUMIDIFYING = 0b00000100
+#define TST_HEATING = 0x01
+#define TST_COOLING = 0x02
+#define TST_DEHUMIDIFYING = 0x03
+#define TST_ENABLED = 0x80
 typedef struct thermostat
 {
 	float current_temperature;
@@ -24,12 +25,12 @@ typedef struct thermostat
 	float avg_dehumidifying_rate;
 	uint64_t time_last_temp;
 	uint64_t time_last_hum;
-	void *dehumidifier_on;
-	void *dehumidifier_off;
-	void *heat_on;
-	void *heat_off;
-	void *ac_on;
-	void *ac_off;
+	void (*dehumidifier_on)();
+	void (*dehumidifier_off)();
+	void (*heat_on)();
+	void (*heat_off)();
+	void (*ac_on)();
+	void (*ac_off)();
 	uint8_t enabled;
 	uint8_t status;
 } thermostat_t;
