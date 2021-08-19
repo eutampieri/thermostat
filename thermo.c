@@ -62,11 +62,11 @@ void tst_report_humidity(thermostat_t *t, float rh)
         // If we are dehumidifying
         if (t->status & TST_DEHUMIDIFYING == TST_DEHUMIDIFYING)
         {
-            t->avg_dehumidifying_rate = (1.0 - TST_ALPHA) * t->avg_dehumidifying_rate + TST_ALPHA * (rh - t->current_humidity) / (now - t->time_last_hum));
+            t->avg_dehumidifying_rate = (1.0 - TST_ALPHA) * t->avg_dehumidifying_rate + TST_ALPHA * (rh - t->current_humidity) / (now - t->time_last_hum);
         }
         else if (!t->status & 0x0F) // If we are idle
         {
-            t->avg_ambient_delta_t_rate = (1.0 - TST_ALPHA) * t->avg_humidifying_rate + TST_ALPHA * (t - t->current_humidity) / (now - th->time_last_hum);
+            t->avg_ambient_delta_t_rate = (1.0 - TST_ALPHA) * t->avg_humidifying_rate + TST_ALPHA * (rh - t->current_humidity) / (now - t->time_last_hum);
         }
     }
     t->current_humidity = rh;

@@ -7,11 +7,11 @@
 #ifndef TST_THERMO
 #define TST_THERMO
 
-#define TST_ALPHA = 0.25
-#define TST_HEATING = 0x01
-#define TST_COOLING = 0x02
-#define TST_DEHUMIDIFYING = 0x03
-#define TST_ENABLED = 0x80
+#define TST_ALPHA 0.25
+#define TST_HEATING 0x01
+#define TST_COOLING 0x02
+#define TST_DEHUMIDIFYING 0x03
+#define TST_ENABLED 0x80
 typedef struct thermostat
 {
 	float current_temperature;
