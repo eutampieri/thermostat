@@ -3,7 +3,10 @@
  * This software is released under the MIT License, whose text you can find below.
  */
 
-typedef struct thermostat {
+#ifndef TST_THERMO
+#define TST_THERMO
+typedef struct thermostat
+{
 	float current_temperature;
 	float current_humidity;
 	float target_temperature;
@@ -16,8 +19,10 @@ typedef struct thermostat {
 	void *ac_off;
 } thermostat_t;
 
-void report_temperature(float t);
-void report_humidity(float rh);
-void set_temperature(float t);
-void set_humidity(float rh);
+thermostat_t tst_init();
 
+void tst_report_temperature(float t);
+void tst_report_humidity(float rh);
+void tst_set_temperature(float t);
+void tst_set_humidity(float rh);
+#endif
